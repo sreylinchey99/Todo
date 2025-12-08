@@ -15,7 +15,7 @@ A responsive Todo List application built with Next.js and Tailwind CSS. This fro
 
 - **Node.js** v20 or later
 - **npm** or **yarn** package manager
-- Backend API running on `http://localhost:/doc` (see [Backend README](../backend/README.md))
+- Backend API running on `http://localhost:8000` (see [Backend README](../backend/README.md))
 
 ## Installation
 
@@ -34,11 +34,17 @@ npm install
 Create a `.env.local` file in the `frontend` directory:
 
 ```env
-NEXT_PUBLIC_BASE_URL=http://localhost
+NEXT_PUBLIC_BASE_URL=http://localhost:8000
 ```
+
+## Running the Server
+
 ```bash
 npm run dev
 ```
+
+The application will be available at:
+- **Frontend**: http://localhost:3000
 
 ## Project Structure
 
@@ -55,5 +61,4 @@ frontend/
 │       ├── globals.css             # Global styles and Tailwind imports
 │       ├── layout.tsx              # Root layout component
 │       └── page.tsx                # Main todo list page
-
 ```

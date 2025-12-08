@@ -13,7 +13,7 @@ A RESTful API for managing todo items built with FastAPI. This backend provides 
 ## Tech Stack
 
 - **FastAPI** - Framework for building APIs
-- **Pydantic** - Data validation using 
+- **Pydantic** - Data validation
 - **Python 3.12+** - Programming language
 
 ## Prerequisites
@@ -75,18 +75,17 @@ uvicorn app.main:app --reload
 ```
 
 The API will be available at:
-- **API**: http://localhost
-- **Interactive API Docs (Swagger UI)**: http://localhost/docs
+- **API**: http://localhost:8000
+- **Interactive API Docs (Swagger UI)**: http://localhost:8000/docs
 
 ## API Endpoints
 
 ### Base URL
 ```
-http://localhost
+http://localhost:8000
 ```
 
 ### Endpoints
-
 
 #### 1. Get All Todos
 - **GET** `/todos/`
@@ -221,26 +220,27 @@ The API implements proper HTTP status codes for different error scenarios:
 
 ## Data Models
 
-### Todo
 ```python
 {
   "id": int,           # Auto-generated unique id
   "title": str,        # Todo title (required, cannot be empty)
   "completed": bool    # Completion status 
 }
+```
 
 ## Project Structure
 
 ```
-backend/
-├── app/
-│   ├── __init__.py
-│   ├── main.py              # FastAPI application and error handlers
-│   ├── models.py            # Pydantic models for request/response
-│   ├── database.py          # In-memory database implementation
-│   └── routers/
-│       ├── __init__.py
-│       └── todos.py         # Todo endpoints
+be-coding-assessment/
+└── backend/
+    └── app/
+        ├── __init__.py
+        ├── main.py            # FastAPI application and error handlers
+        ├── models.py          # Pydantic models for request/response
+        ├── database.py        # In-memory database implementation
+        └── routers/
+            ├── __init__.py
+            └── todos.py       # Todo endpoints
 ```
 
 ## CORS Configuration
@@ -257,7 +257,7 @@ uvicorn app.main:app --reload
 
 You can test the API using:
 
-1. **Swagger UI**: http://localhost:/docs
+1. **Swagger UI**: http://localhost:8000/docs
 
 
 ### CORS Issues
