@@ -1,7 +1,7 @@
 [project]
-name = "be-coding-assessment"
+name = "Todo_Backend"
 version = "0.1.0"
-description = "Add your description here"
+description = "Backend for Todo application with CRUD Operations."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

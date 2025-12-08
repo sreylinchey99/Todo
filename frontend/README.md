@@ -1,48 +1,59 @@
-# 📝 To-Do List App – Frontend Coding Assessment
+# Todo Frontend Application
 
-This is a full-stack CRUD To-Do List App built with **Next.js (App Router)**.
+A responsive Todo List application built with Next.js and Tailwind CSS. This frontend provides a complete user interface for managing todo items with full CRUD functionality.
 
----
+## Features
 
-## 📌 Overview
+- ✅ **Create Todos** - Add new tasks with a simple input field
+- ✅ **Read Todos** - Display all todos in a clean, organized list
+- ✅ **Update Todos** - Edit task titles and toggle completion status
+- ✅ **Delete Todos** - Remove tasks with a single click
+- ✅ **Loading States** - Visual feedback during data fetching
 
-This assessment is designed to evaluate your frontend skills in the following areas:
 
-- Creating a structure, component-based UI
-- Handling asynchronous data with API endpoints
-- Implementing CRUD operations (Create, Read, Update, Delete)
-- Writing clean, maintainable code
-- Making the UI responsive and mobile-friendly
+## Prerequisites
 
----
+- **Node.js** v20 or later
+- **npm** or **yarn** package manager
+- Backend API running on `http://localhost:/doc` (see [Backend README](../backend/README.md))
 
-## ⚙️ Getting Started
+## Installation
 
-### Prerequisites
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
 
-- Node.js (v20 or later)
-
-### Install dependencies
-
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-### Start dev server
+## Environment Setup
 
+Create a `.env.local` file in the `frontend` directory:
+
+```env
+NEXT_PUBLIC_BASE_URL=http://localhost
+```
 ```bash
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000)
+## Project Structure
 
----
+```
+frontend/
+├── src/
+│   └── app/
+│       ├── component/
+│       │   ├── button.tsx          # Reusable button component
+│       │   ├── checkBox.tsx        # Checkbox component for todo completion
+│       │   └── TodoListCard.tsx    # Individual todo item card
+│       ├── lib/
+│       │   └── api.ts              # API client functions
+│       ├── globals.css             # Global styles and Tailwind imports
+│       ├── layout.tsx              # Root layout component
+│       └── page.tsx                # Main todo list page
 
-## ✅ Your Tasks
-
-- [ ] Add new tasks via an input field
-- [ ] Display a list of tasks
-- [ ] Mark tasks as complete/incomplete
-- [ ] Edit task titles
-- [ ] Delete tasks
-- [ ] Responsive UI with Tailwind
+```
