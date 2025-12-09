@@ -55,7 +55,7 @@ frontend/
 │       ├── component/
 │       │   ├── button.tsx          # Reusable button component
 │       │   ├── checkBox.tsx        # Checkbox component for todo completion
-│       │   └── TodoListCard.tsx    # Individual todo item card
+│       │   └── TodoListCard.tsx    # Todo List cards
 │       ├── lib/
 │       │   └── api.ts              # API client functions
 │       ├── globals.css             # Global styles and Tailwind imports

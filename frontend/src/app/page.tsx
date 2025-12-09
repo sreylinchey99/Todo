@@ -42,12 +42,15 @@ export default function TodoListPage() {
       setTodos((prev) => [created, ...prev.filter(t => t.id !== temp.id)]);
       setError(null);
     } catch (e: any) {
-      setError(e.message ?? "Failed to create");
       setTodos((prev) => prev.filter(t => t.id !== temp.id));
+      setError(e.message ?? "Failed to create");
     }
   }
 
   async function handleCheckBoxTodo(todo: Todo) {
+    const temp = { ...todo, completed: !todo.completed };
+    setTodos((prev) => prev.map(t => t.id === todo.id ? temp : t));
+    
     try {
       const updated = await updateTodo({
         id: todo.id,
@@ -57,6 +60,7 @@ export default function TodoListPage() {
       setTodos((prev) => prev.map(t => t.id === todo.id ? updated : t));
       setError(null);
     } catch (e: any) {
+      setTodos((prev) => prev.map(t => t.id === todo.id ? todo : t));
       setError(e.message ?? "Failed to update");
     }
   }
@@ -64,25 +68,35 @@ export default function TodoListPage() {
   async function handleEditTodo(todo: Todo, newTitle: string) {
     if (!newTitle.trim()) return;
     
+    const trimmedTitle = newTitle.trim();
+    const temp = { ...todo, title: trimmedTitle };
+    setTodos((prev) => prev.map(t => t.id === todo.id ? temp : t));
+    
     try {
       const updated = await updateTodo({
         id: todo.id,
-        title: newTitle.trim(),
+        title: trimmedTitle,
         completed: todo.completed
       });
       setTodos((prev) => prev.map(t => t.id === todo.id ? updated : t));
       setError(null);
     } catch (e: any) {
+      setTodos((prev) => prev.map(t => t.id === todo.id ? todo : t));
       setError(e.message ?? "Failed to update");
     }
   }
 
   async function handleDeleteTodo(id: number) {
+    const todoToDelete = todos.find(t => t.id === id);
+    if (!todoToDelete) return;
+    
+    setTodos((prev) => prev.filter(t => t.id !== id));
+    
     try {
       await deleteTodo(id);
-      setTodos((prev) => prev.filter(t => t.id !== id));
       setError(null);
     } catch (e: any) {
+      setTodos((prev) => [...prev, todoToDelete].sort((a, b) => a.id - b.id));
       setError(e.message ?? "Failed to delete");
     }
   }
